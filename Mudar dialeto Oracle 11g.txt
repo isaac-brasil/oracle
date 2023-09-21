@@ -1,0 +1,18 @@
+#### MUDAR PARAMETRO SENHA CASE SENSITIVE ORACLE 11 ####
+
+1° alter system set sec_case_sensitive_logon=false scope=both;
+
+#### MUDAR CHARACTER SER ORACLE 11 ####
+
+2° SHUTDOWN IMMEDIATE;
+3° STARTUP RESTRICT;
+4° ALTER DATABASE CHARACTER SET INTERNAL_USE WE8MSWIN1252;
+5° SHUTDOWN IMMEDIATE;
+6° STARTUP;
+7° alter profile default limit password_life_time unlimited;
+
+#### VALIDAR SE ALTEROU O DIALETO DO ORACLE ####
+
+1° SELECT value$ FROM sys.props$ WHERE name = 'NLS_CHARACTERSET'; 
+
+WE8MSWIN1252 ok
